@@ -1,0 +1,3 @@
+# Protect Includes Directory
+Order Deny,Allow
+Deny from all

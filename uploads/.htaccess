@@ -1,0 +1,17 @@
+# Protect Uploads Directory
+# Only allow image files to be accessed
+
+<FilesMatch "\.(php|php3|php4|php5|phtml|pl|py|jsp|asp|htm|shtml|sh|cgi)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Allow only images
+<FilesMatch "\.(jpg|jpeg|png|gif)$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>
+
+# Disable script execution
+Options -ExecCGI
+AddHandler cgi-script .php .php3 .php4 .php5 .phtml .pl .py .jsp .asp .htm .shtml .sh .cgi

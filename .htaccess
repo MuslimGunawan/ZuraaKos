@@ -1,0 +1,89 @@
+# Security Headers
+<IfModule mod_headers.c>
+    # Prevent clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # XSS Protection
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Prevent MIME sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Referrer Policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Content Security Policy
+    Header always set Content-Security-Policy "default-src 'self' https://cdn.jsdelivr.net https://via.placeholder.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: https: blob:; font-src 'self' data: https://cdn.jsdelivr.net;"
+    
+    # Remove Server Information
+    Header always unset X-Powered-By
+    Header always unset Server
+</IfModule>
+
+# Disable Directory Browsing
+Options -Indexes
+
+# Protect Configuration Files
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+<FilesMatch "(composer\.json|composer\.lock|package\.json|package-lock\.json|\.env)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Protect sensitive files
+<FilesMatch "(database\.php|auth\.php|functions\.php)$">
+    Order allow,deny
+    Deny from all
+    Satisfy All
+</FilesMatch>
+
+# Prevent access to backup files
+<FilesMatch "\.(bak|backup|old|orig|save|swp|tmp)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Enable GZIP Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Browser Caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 year"
+</IfModule>
+
+# UTF-8 Encoding
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .css .js .xml .json .rss .atom
+
+# PHP Security Settings
+<IfModule mod_php7.c>
+    php_flag display_errors Off
+    php_flag log_errors On
+    php_value error_log /var/log/php_errors.log
+    php_flag expose_php Off
+    php_value session.cookie_httponly 1
+    php_value session.cookie_secure 1
+    php_value session.use_only_cookies 1
+</IfModule>
+
+# Protect uploads directory - only allow images
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteCond %{REQUEST_URI} uploads/
+    RewriteCond %{REQUEST_FILENAME} !\.(jpg|jpeg|png|gif)$ [NC]
+    RewriteRule . - [F,L]
+</IfModule>

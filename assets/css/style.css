@@ -1,0 +1,522 @@
+/* Custom Styles for Kos Management System */
+
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+/* Card Styles */
+.card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.1);
+}
+
+.room-card {
+    height: 100%;
+}
+
+.room-card img {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,.15);
+}
+
+/* Sidebar */
+.sidebar {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.sidebar .nav-link {
+    color: rgba(255,255,255,0.8);
+    padding: 12px 20px;
+    margin: 5px 0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background: rgba(255,255,255,0.2);
+    color: white;
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px;
+    width: 20px;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    border-left: 4px solid;
+    border-radius: 8px;
+}
+
+.dashboard-card.primary {
+    border-left-color: var(--primary-color);
+}
+
+.dashboard-card.success {
+    border-left-color: var(--success-color);
+}
+
+.dashboard-card.warning {
+    border-left-color: var(--warning-color);
+}
+
+.dashboard-card.danger {
+    border-left-color: var(--danger-color);
+}
+
+/* Tables */
+.table {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table thead {
+    background-color: #f8f9fa;
+}
+
+/* Badges */
+.badge {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* Forms */
+.form-control,
+.form-select {
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    padding: 10px 15px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(13,110,253,.25);
+}
+
+/* Footer Modern */
+.footer-modern {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #667eea 100%);
+    color: white;
+    padding: 50px 0 20px;
+    margin-top: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+}
+
+.footer-modern h5 {
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.footer-contact li a,
+.footer-links li a {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-contact li a:hover,
+.footer-links li a:hover {
+    transform: translateX(5px);
+    color: #f093fb !important;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.social-icon:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        min-height: auto;
+    }
+    
+    .room-card img {
+        height: 150px;
+    }
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 120px 0;
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../images/pattern.png') repeat;
+    opacity: 0.1;
+    animation: movePattern 20s linear infinite;
+}
+
+@keyframes movePattern {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    animation: fadeInDown 1s ease;
+}
+
+.hero .lead {
+    font-size: 1.3rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Gallery Section */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    padding: 20px;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+.gallery-overlay h5, .gallery-overlay h6 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.gallery-overlay p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Price Tag */
+.price-tag {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Status Indicators */
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.status-indicator.available {
+    background-color: var(--success-color);
+}
+
+.status-indicator.occupied {
+    background-color: var(--warning-color);
+}
+
+.status-indicator.maintenance {
+    background-color: var(--danger-color);
+}
+
+/* Enhanced Room Cards */
+.room-card-enhanced {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: white;
+}
+
+.room-card-enhanced:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+.room-image-enhanced {
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.room-card-enhanced:hover .room-image-enhanced {
+    transform: scale(1.1);
+}
+
+.room-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.room-card-enhanced:hover .room-overlay {
+    opacity: 1;
+}
+
+.price-tag-enhanced {
+    color: #667eea;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.facilities-preview .badge {
+    font-size: 0.7rem;
+    padding: 5px 8px;
+    font-weight: 500;
+}
+
+.btn-hover-effect {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-hover-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.btn-hover-effect:hover::before {
+    left: 100%;
+}
+
+/* Filter Card */
+.filter-card {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.shadow-hover {
+    transition: box-shadow 0.3s ease;
+}
+
+.shadow-hover:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Empty State */
+.empty-state {
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Room Image Animation */
+.room-image {
+    transition: transform 0.5s ease;
+}
+
+.room-card:hover .room-image {
+    transform: scale(1.05);
+}
+
+/* Badge Animations */
+.badge {
+    animation: fadeIn 0.5s ease;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Loading Animation */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
